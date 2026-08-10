@@ -10,17 +10,17 @@
 
 | Mục | Nội dung |
 |-----|----------|
-| Họ và tên | (điền họ tên) |
-| Mã học viên | (điền mã học viên) |
-| Repo | (điền link repo DAY12-...) |
+| Họ và tên | Đặng Tiến Thành |
+| Mã học viên | 2A202601305 |
+| Repo | https://github.com/dt-thanh/K3-Day12-2A202601305_DANGTIENTHANH |
 
 ## Service
 
 | Mục | Nội dung |
 |-----|----------|
-| Public URL | https://TODO-thay-bang-url-that.up.railway.app |
-| Platform | Railway / Render / Cloud Run — (điền platform bạn dùng) |
-| Ngày deploy | (điền ngày) |
+| Public URL | day12-agent-production-29a9.up.railway.app |
+| Platform | Railway |
+| Ngày deploy | 2026-08-10 |
 
 ## Biến Môi Trường Đã Set Trên Cloud
 
@@ -37,7 +37,7 @@ Ghi tên biến và **nguồn giá trị**, không ghi giá trị:
 
 ## Lệnh Kiểm Tra
 
-Thay `<URL>` bằng Public URL ở trên:
+URL="https://day12-agent-production-29a9.up.railway.app"
 
 ```bash
 # 1. Liveness — mong đợi 200 {"status":"ok"}
@@ -73,7 +73,41 @@ done; echo
 Dán output của các lệnh trên vào đây:
 
 ```
-(điền output)
+(.venv) thanhdt@thanhdt-Dell-G15-5511:~/Documents/AI IN VINUNI/K3-Day12-2A202601305_DANGTIENTHANH$ URL="https://day12-agent-production-29a9.up.railway.app"
+
+curl -i "$URL/health"
+
+curl -i "$URL/ready"
+
+curl -i -X POST "$URL/ask" \
+  -H "Content-Type: application/json" \
+  -d '{"question":"Hello"}'
+HTTP/2 200 
+content-type: application/json
+date: Mon, 10 Aug 2026 09:26:10 GMT
+server: railway-hikari
+x-railway-request-id: 1B6I6PnFTMqXOXpn-_9nXA
+content-length: 57
+x-hikari-trace: sin1.nzn2
+x-railway-edge: sin1
+
+{"status":"ok","service":"day12-agent","version":"1.0.0"}HTTP/2 500 
+content-type: text/plain; charset=utf-8
+date: Mon, 10 Aug 2026 09:26:10 GMT
+server: railway-hikari
+x-railway-request-id: wCOBrwmoRkqySguA9o6EoQ
+content-length: 21
+x-hikari-trace: sin1.hs0s
+x-railway-edge: sin1
+
+Internal Server ErrorHTTP/2 500 
+content-type: text/plain; charset=utf-8
+date: Mon, 10 Aug 2026 09:26:11 GMT
+server: railway-hikari
+x-railway-request-id: 2uyv3G67RXCl9YZtlt7tkg
+content-length: 21
+x-hikari-trace: sin1.nzn2
+x-railway-edge: sin1
 ```
 
 ## Ảnh Chụp Màn Hình
